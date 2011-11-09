@@ -1,5 +1,6 @@
 The PHP-based Web application is a preview of two geolocation methods
-used in the Android phone application FlyNOR and another HTML method.
+used in Android phone application flynor-android (select-airport.php)
+and another HTML5-based method (locate-airport.php).
 
 The geopositions of the 47 Norwegian airports operated by Avinor were
 found based on the postal numbers for the airports provided by Avinor
@@ -12,6 +13,7 @@ of the device and the geopositions of the airports.
 == Authors and contributors ==
 
 1st geolocation implementation was written by Ole Aamot, August 2009.
+2nd geolocation implementation was written by Ole Aamot, August 2011.
 
 The Avinor PHP API Library was initially written by Flamur Mavraj and
 forked by Ole Aamot from version 1.1 for better language support, GPS
