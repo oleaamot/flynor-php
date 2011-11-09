@@ -1,0 +1,19 @@
+The PHP-based Web application is a preview of two geolocation methods
+used in the Android phone application FlyNOR and another HTML method.
+
+The geopositions of the 47 Norwegian airports operated by Avinor were
+found based on the postal numbers for the airports provided by Avinor
+and the NRK/yr.no project Norske postnummer.  In FlyNOR 1.4.3 was the
+geoposition of the Android phone device automatically found using the
+network data (ACCESS_COARSE_LOCATION) and then the closest airport is
+found by computing the shortest Manhattan distance between the gpspos
+of the device and the geopositions of the airports.
+
+== Authors and contributors ==
+
+1st geolocation implementation was written by Ole Aamot, August 2009.
+
+The Avinor PHP API Library was initially written by Flamur Mavraj and
+forked by Ole Aamot from version 1.1 for better language support, GPS
+geolocations, more air shuttle logos and for booking link for flights
+operated by Norwegian Air Shuttle (DY).
