@@ -1,0 +1,180 @@
+<!--
+
+#debug { margin-top:.2em;padding:1em;background-color:#fffacd;border-top:1px dotted #ffa500;-moz-border-radius:.5em;-webkit-border-radius:.5em; }
+
+div#extra { color:#777;padding:1em .2em 10em .2em;font-size:.8em; }
+
+h1 {padding-left:.2em;color:#f1f1f1;}
+
+#where h1 {float:left}
+#where span {font-size:.8em;color:#777;}
+#where span a {color:#999;text-decoration:none;}
+
+body {
+	padding: 0;
+	margin: 0;
+	font: normal 12px Helvetica, Arial, sans-serif;
+	text-align: center;
+}
+a {
+	color: #000000;
+	text-decoration: none;
+	cursor: pointer;
+}
+.program {
+	width: 60%;
+	margin: 0 auto 18px;
+}
+
+table {
+	width: 320px;
+	margin-top: auto;
+	margin-bottom: auto;
+	margin-left: auto;
+	margin-right: auto;
+	border-left: 1px solid #a09f9e;
+	border-right: 1px solid #a09f9e;
+	background: #e5e4e2;
+	border-collapse: collapse;
+	border-bottom: 1px solid #a09f9e;
+}
+table tr td.direction {
+	text-align: left;
+	width: 59px;
+	padding-left: 25px;
+	vertical-align: top;
+}
+b.item {
+	background: #ffff00;
+}
+table tr td img {
+	vertical-align: middle;
+}
+table tr td {
+	text-align: left;
+	margin-top: auto;
+	margin-bottom: auto;
+	margin-left: auto;
+	margin-right: auto;
+	font: normal 12px Helvetica, Arial, sans-serif;
+}
+img {
+	border: 0;
+	margin-top: auto;
+	margin-bottom: auto;
+	margin-left: auto;
+	margin-right: auto;
+}
+a img {
+	border: 0;
+}
+div.item {
+	background: #ffff00;
+}
+
+
+table.search {
+	width: 320px;
+	border: 0px;
+}
+table.search tr.header {
+	background: url(../gfx/bg.png) no-repeat;
+}
+table.search tr.norwegian {
+	background: #ffffff;
+}
+table.search th {
+	text-align: left;
+	border: 0px;
+	border-left: 1px solid #a09f9e;
+	width: 66px;
+	padding: 0px;
+	padding-bottom: 15px;
+	padding-left: 18px;
+	padding-top: 0px;
+}
+table.search .top {
+	padding-top: 20px;
+}
+table.search td {
+	text-align: left;
+	width: 234px;
+	border: 0px;
+	padding: 0px;
+	padding-bottom: 15px;
+	padding-top: 0px;
+	border-right: 1px solid #a09f9e;
+	padding-left: 5px;
+}
+table.search tr.header td {
+	text-align: left;
+	border-bottom: 1px solid #e5e4e2;
+}
+table.search tr.header td.left {
+	width: 67px;
+	height: 52px;
+	border: 0px;
+	padding-left: 18px;
+	padding-top: 15px;
+	padding-bottom: 12px;
+	border-left: 1px solid #924e0b;
+}
+table.search tr.header td.right {
+	width: 235px;
+	height: 52px;
+	border: 0px;
+	text-align: right;
+	padding-right: 15px;
+	padding-top: 15px;
+	padding-bottom: 12px;
+}
+table.search label {
+	font: bold 14px Helvetica, Arial, sans-serif;
+}
+table.search select {
+	font: bold 16px Helvetica, Arial, sans-serif;
+}
+table.search input {
+	font: bold 16px Helvetica, Arial, sans-serif;
+}
+table.search td.div {
+	width: 318px;
+	padding: 0px;
+	padding-bottom: 17px;
+	text-align: center;
+	border-right: 1px solid #a09f9e;
+	border-left: 1px solid #a09f9e;
+}
+select {
+	border: 1px solid #000;
+	background: #e5e4e2;
+	width: 215px;
+	font: normal 11px Helvetica, Arial, sans-serif;
+}
+input {
+	border: 1px solid #000;
+	background: #e5e4e2;
+	width: 145px;
+	font: normal 11px Helvetica, Arial, sans-serif;
+}
+td.directions {
+	font-size: 12px;
+}
+td.directions input.radio {
+	width: 10px;
+	vertical-align: middle;
+}
+select.time {
+	width: 60px !important;
+}
+button {
+	border: 0px;
+	padding: 0px;
+	margin: 0px;
+	background: #e5e4e2;
+}
+form {
+	margin: 0px;
+	padding: 0px;
+}
+-->
