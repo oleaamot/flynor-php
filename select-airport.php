@@ -150,7 +150,8 @@ $pnummap = array(
 if(isset($_GET['gps'])) {
 	$gpsdata = array($_GET['gpsdata_latitude'], $_GET['gpsdata_longitude']);
 } else {
-	$gpsdata = array('60.18526', '11.08224');
+        header("Location: http://www.flynor.net/locate-airport.php");
+	exit(0);
 }
 
 foreach ($pnummap as $key => $val) {
