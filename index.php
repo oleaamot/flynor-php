@@ -120,7 +120,7 @@ if(isset($_GET['airport'])){
 } else {
 	$airport 	= "OSL";
 	$timeFrom	= 1;
-	$timeTo		= 2;
+	$timeTo		= 6;
 	$direction	= "D";
 }
 
