@@ -92,6 +92,9 @@ $status_new['Avreist'] = "Departured";
 $return_lbl['en']   = "<a href='#'>Return to main page</a>";
 $return_lbl['no']   = "<a href='#'>Tilbake til hovedsiden</a>";
 
+$select_airport['en'] = "SELECT AIRPORT";
+$select_airport['no'] = "VELG FLYPLASS";
+
 $credit['en']   = "<a href='http://www.flynor.net/privacy/'>Privacy Policy</a></p><p align='center'>Graphical design by<br /><a href='http://www.copyleft.no/'><img src='gfx/logo-hor-red-sml.png'></a></p>";
 
 $credit['no']   = "<a href='http://www.flynor.net/privacy/'>Om personvern</a>.</p><p align='center'>Grafisk design av<br /><a href='http://www.copyleft.no/'><img src='gfx/logo-hor-red-sml.png'></a></p>";
@@ -268,7 +271,7 @@ $results = $result;
 		<th><label for="airport_destination"><? echo $airport_destination_lbl[$language]; ?></label></th>
 		<td class="directions">
 		<select id="airport_destination" name="airport_destination" onchange='this.form.submit()'>
-		<option value='SELECT'>SELECT AIRPORT</option>
+		<option value='SELECT'><? echo $select_airport[$language]; ?></option>
 		<?
 		foreach($results as $flights) {
 			$code = $flights['airport']['code'];
