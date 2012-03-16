@@ -12,7 +12,15 @@ $langs = array (
         'no',
 	'nn',
 );
-$language = "en";
+$avinor   = new avinor();
+$language = $avinor->accept_language($langs);
+if ($language=="en")    { $language = "en"; }
+if ($language=="en-US") { $language = "en"; }
+if ($language=="en-GB") { $language = "en"; }
+if ($language=="fr-FR") { $language = "en"; }
+if ($language=="fr")    { $language = "en"; }
+if ($language=="nn")    { $language = "no"; }
+if ($language=="nb")    { $language = "no"; }
 ?>
 
 <table class="search" border="0">

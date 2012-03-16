@@ -95,9 +95,12 @@ $return_lbl['no']   = "<a href='#'>Tilbake til hovedsiden</a>";
 $select_airport['en'] = "SELECT AIRPORT";
 $select_airport['no'] = "VELG FLYPLASS";
 
-$credit['en']   = "<a href='http://www.flynor.net/privacy/'>Privacy Policy</a></p><p align='center'>Graphical design by<br /><a href='http://www.copyleft.no/'><img src='gfx/logo-hor-red-sml.png'></a></p>";
+$credit['en']   = "<b><a href='http://www.flynor.net/privacy/'>Privacy Policy</a></p><p align='center'>Graphical design by<br /><a href='http://www.copyleft.no/'><img src='gfx/logo-hor-red-sml.png'></a></p></b>";
 
-$credit['no']   = "<a href='http://www.flynor.net/privacy/'>Om personvern</a>.</p><p align='center'>Grafisk design av<br /><a href='http://www.copyleft.no/'><img src='gfx/logo-hor-red-sml.png'></a></p>";
+$credit['no']   = "<b><a href='http://www.flynor.net/privacy/'>Om personvern</a>.</p><p align='center'>Grafisk design av<br /><a href='http://www.copyleft.no/'><img src='gfx/logo-hor-red-sml.png'></a></p></b>";
+
+$links['en']    = "<a href='http://www.flynor.net/links/'>Useful travel links</a>";
+$links['no']    = "<a href='http://www.flynor.net/links/'>Nyttige reiselenker</a>";
 
 $timeNow 	= time();
 		
@@ -112,7 +115,7 @@ if(isset($_GET['airport'])){
 	if (isset($_GET['timeTo'])) {
 		$timeTo		= $_GET['timeTo'];
 	} else {
-		$timeTo = 2;
+		$timeTo = 6;
 	}
 	if (isset($_GET['direction'])) {
 		$direction	= $_GET['direction'];
@@ -382,6 +385,7 @@ foreach($result as $flight):
 	?>
 <?
 	if ($aircode == $_GET['airport_destination']) {
+
 ?>
 <table>
 <tbody>
@@ -433,25 +437,25 @@ foreach($result as $flight):
 				echo "</a>";
 			}
 			?>
-			<?php if (!isset($airlineicons[$airline_selected])) echo utf8_decode($flight['airline']['name']); ?>
+			<?php if (!isset($airlineicons[$airline_selected])) echo "<b style='color: #0000aa'>" . utf8_decode($flight['airline']['name']) . "</b>"; ?>
 		</td>
 	</tr>
 	<tr>
-		<td><? echo $flightIcon['typo']; ?>&nbsp;<?php echo $avg; ?></td>
+		<td><? echo $flightIcon['typo']; ?>&nbsp;<?php echo "<b style='color: #aa0000'>" . $avg . "</b>"; ?></td>
 		<? // echo $departs[$language]; ?>
 	</tr>
 	<tr>
 		<? if(isset($gate)) {
-			echo "<td>" . $gate_lbl[$language] . " " . $gate . "</td>";
+			echo "<td>" . $gate_lbl[$language] . " <b style='color: #aa0000'>" . $gate . "</b></td>";
 	           }
 		   if(isset($belt)) {
-			echo "<td>" . $belt_lbl[$language] . " " . $belt . "</td>";
+			echo "<td>" . $belt_lbl[$language] . " <b style='color: #aa0000'>" . $belt . "</b></td>";
 		   }
 		?>
 	</tr>
 
 	<tr>
-		<td><? echo $status_lbl[$language]; ?> <? echo $status; ?></td>
+	    <td><? echo $status_lbl[$language]; ?> <? echo "<b style='color: #aa0000'>" . $status . "</b>"; ?></td>
 	</tr>
 	<tr>
 		<td>&nbsp;</td>
@@ -468,5 +472,12 @@ endforeach;
 ?>
 <p align="center"><? echo $credit[$language]; ?></p>
 <!-- AppStoreHQ:developer_claim_code:6b59d7df54d52432ad42df254a89efcdd61b132c -->
+<p><b><? echo $links[$language]; ?></b><br />
+<a href="https://www.flyklagenemnda.no/">Flyklagenemda</a><br />
+<a href="http://www.rgf.no" target="_blank">Reisegarantifondet</a><br /> 
+<a href="http://www.landsider.no" target="_blank">UDs landsider</a><br /> 
+<a href="http://www.forbrukerportalen.no" target="_blank">Forbrukerportalen</a><br /> 
+<a href="http://www.flypassasjer.no" target="_blank">Flypassasjer.no</a><br /> 
+<a href="http://www.lovdata.no/all/hl-19930611-101.html" target="_blank">Luftfartsloven (Lovdata)</a></p>
 </body>
 </html>

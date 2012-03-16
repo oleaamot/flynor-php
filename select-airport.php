@@ -169,5 +169,5 @@ function min_key($array) {
 	}
 }
 $airport = min_key($zdelta);
-header("Location: http://www.flynor.net/?airport=" . $airport . "&direction=D&timeFrom=0&timeTo=2&flight_number=&btnSearch=#item");
+header("Location: http://www.flynor.net/?airport=" . $airport . "&direction=D&timeFrom=0&timeTo=6&flight_number=&btnSearch=#item");
 ?>
