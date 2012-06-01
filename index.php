@@ -340,10 +340,6 @@ $results = $result;
 			<th>&nbsp;</th>
 			<td><button type="submit" name="btnSearch"><img src="gfx/btn_search.png" width="68" height="22" border="0" alt="Flight Search Button" /></button></td>
 				  </tr>
-	<tr>
-		<th><label for="flight_number"><? echo $flight_number_lbl[$language]; ?></label></th>
-		<td><input name="flight_number" size="6" value="<?php echo $flight_number; ?>" />&nbsp;<button type="submit" name="btnSearch"><img src="gfx/btn_search.png" width="68" height="22" border="0" alt="Flight Search Button" /></button></td>
-	</tr>
 </table>
 </form>
 <a name="main"></a>
