@@ -30,6 +30,9 @@ if ($language=="nb")    { $language = "no"; }
 $strike['en'] = get_strike("en");
 $strike['no'] = get_strike("no");
 
+$airportdata['en'] = "Airport data from Avinor";
+$airportdata['no'] = "Flydata fra Avinor";
+
 $htitle['en']   = $_SERVER['SERVER_NAME'];
 $htitle['no']   = $_SERVER['SERVER_NAME'];
 
@@ -222,7 +225,7 @@ $airports = array(
 <table class="search" border="0">
 	<tr class="header">
 		<td class="left"><h1>FlyNor</h1></td>
-		<td class="right"><div style='color: #ffffff'><a href='http://www.avinor.no/'>Airport data from Avinor</a></div></td>
+  <td class="right"><div style='color: #ffffff'><a href='http://www.avinor.no/'><? echo $airportdata[$language]; ?></a></div></td>
 	</tr>
 	<?
 	if ($strike[$language] != "") {
