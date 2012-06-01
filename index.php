@@ -2,6 +2,7 @@
 session_start();
 include 'lib/class.flynor.php';
 include 'lib/class.avinor.php';
+include 'lib/class.strike.php';
 
 $langs = array (
         'en-US',
@@ -26,8 +27,8 @@ if ($language=="fr")    { $language = "en"; }
 if ($language=="nn")    { $language = "no"; }
 if ($language=="nb")    { $language = "no"; }
 
-// $crisis['en'] = get_crisis("en");
-// $crisis['no'] = get_crisis("no");
+$strike['en'] = get_strike("en");
+$strike['no'] = get_strike("no");
 
 $htitle['en']   = $_SERVER['SERVER_NAME'];
 $htitle['no']   = $_SERVER['SERVER_NAME'];
@@ -95,9 +96,9 @@ $return_lbl['no']   = "<a href='#'>Tilbake til hovedsiden</a>";
 $select_airport['en'] = "SELECT AIRPORT";
 $select_airport['no'] = "VELG FLYPLASS";
 
-$credit['en']   = "<b><a href='http://www.flynor.net/privacy/'>Privacy Policy</a></p><p align='center'>Graphical design by<br /><a href='http://www.copyleft.no/'><img src='gfx/logo-hor-red-sml.png'></a></p></b>";
+$credit['en']   = "<b><a href='http://www.flynor.net/privacy/'>Privacy Policy</a></b></p><p align='center'><b>Graphical design by<br /><a href='http://www.copyleft.no/'><img src='gfx/logo-hor-red-sml.png' alt='Graphical Design Logo' /></a></b>";
 
-$credit['no']   = "<b><a href='http://www.flynor.net/privacy/'>Om personvern</a>.</p><p align='center'>Grafisk design av<br /><a href='http://www.copyleft.no/'><img src='gfx/logo-hor-red-sml.png'></a></p></b>";
+$credit['no']   = "<b><a href='http://www.flynor.net/privacy/'>Om personvern</a>.</b></p><p align='center'><b>Grafisk design av<br /><a href='http://www.copyleft.no/'><img src='gfx/logo-hor-red-sml.png' alt='Graphical Design Logo' /></a></b>";
 
 $links['en']    = "<a href='http://www.flynor.net/links/'>Useful travel links</a>";
 $links['no']    = "<a href='http://www.flynor.net/links/'>Nyttige reiselenker</a>";
@@ -220,21 +221,21 @@ $airports = array(
 <form action="http://www.flynor.net/#item" method="get">
 <table class="search" border="0">
 	<tr class="header">
-		<td class="left"><img src="gfx/flynor.png" width="55" height="23" border="0"></td>
-		<td class="right"><a href="http://www.avinor.no/"><img src="gfx/adata.png" width="60" height="23" border="0"></a></td>
+		<td class="left"><h1>FlyNor</h1></td>
+		<td class="right"><div style='color: #ffffff'><a href='http://www.avinor.no/'>Airport data from Avinor</a></div></td>
 	</tr>
 	<?
-	if ($crisis[$language] != "") {
+	if ($strike[$language] != "") {
 	?>
 	 	<tr>
-	 	<th class="top" colspan="3"><? echo $crisis[$language]; ?></th>
+	 	<th colspan="3"><div style='font-size: 13px;'><? echo $strike[$language]; ?></div></th>
 	 	</tr>
 	<?
 	} 
 	?>
 	<tr>
-		<th class="top"><label for="airport"><? echo $airport_lbl[$language]; ?></label></th>
-		<td class="top">
+		<th><label for="airport"><? echo $airport_lbl[$language]; ?></label></th>
+		<td>
 			<select id="airport" name="airport" onchange='this.form.submit()'>
 			<?php foreach($airports as $airCode => $airName):?>
 			<option value="<?php echo $airCode; ?>" <?php echo ($airCode == strtoupper($_GET['airport']) ? 'selected="selected"' : ''); ?>><?php echo $airName; ?></option>
@@ -302,7 +303,7 @@ $results = $result;
 		<th><label for="direction"><? echo $airport_dir[$language]; ?></label></th>
 		<td class="directions">
 			<?php foreach($directions as $dirValue => $dirMsg):?>
-			<input type="radio" name="direction" class="radio" value="<?php echo $dirValue; ?>" <?php echo ($dirValue == $direction ? 'checked="checked"' : ''); ?>  onchange='this.form.submit()'>
+			<input type="radio" name="direction" class="radio" value="<?php echo $dirValue; ?>" <?php echo ($dirValue == $direction ? 'checked="checked"' : ''); ?>  onchange='this.form.submit()' />
 			<?php echo $dirMsg; ?>
 			<?php endforeach; ?>
 		</td>
@@ -336,15 +337,13 @@ $results = $result;
 
 	</tr>
 	<tr>
-		<th><label for="flight_number"><? echo $flight_number_lbl[$language]; ?></label></th>
-		<td><input name="flight_number" size="6" value="<?php echo $flight_number; ?>" >&nbsp;<button type="submit" name="btnSearch"><img src="gfx/btn_search.png" width="68" height="22" border="0"></button></td>
-	</tr>
-<!--
+			<th>&nbsp;</th>
+			<td><button type="submit" name="btnSearch"><img src="gfx/btn_search.png" width="68" height="22" border="0" alt="Flight Search Button" /></button></td>
+				  </tr>
 	<tr>
-		<th></th>
-		<td></td>
+		<th><label for="flight_number"><? echo $flight_number_lbl[$language]; ?></label></th>
+		<td><input name="flight_number" size="6" value="<?php echo $flight_number; ?>" />&nbsp;<button type="submit" name="btnSearch"><img src="gfx/btn_search.png" width="68" height="22" border="0" alt="Flight Search Button" /></button></td>
 	</tr>
--->
 </table>
 </form>
 <a name="main"></a>
@@ -385,6 +384,11 @@ foreach($result as $flight):
 	?>
 <?
 	if ($aircode == $_GET['airport_destination']) {
+
+	        $fp = fopen("/home/3/f/flynor/visitor", "a+");
+                $date = date("Y-m-d\TH:i:s\Z");
+                fwrite($fp, $_SERVER['REMOTE_ADDR'] . " " . $date . " " . $flight['flightId'] . " " . $direction . " " . $_GET['airport'] . " " . $_GET['airport_destination'] . " " . $_SERVER['HTTP_REFERER'] . "\n");
+                fclose($fp);
 
 ?>
 <table>

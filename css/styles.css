@@ -1,13 +1,14 @@
 <!--
 
-#debug { margin-top:.2em;padding:1em;background-color:#fffacd;border-top:1px dotted #ffa500;-moz-border-radius:.5em;-webkit-border-radius:.5em; }
+#debug { margin-top:.2em;padding:1em;background-color:#aaaaaa;-moz-border-radius:.5em;-webkit-border-radius:.5em; }
+// border-top:1px dotted #ffa500;
 
-div#extra { color:#777;padding:1em .2em 10em .2em;font-size:.8em; }
+div#extra { color:#aaaaaa;padding:1em .2em 10em .2em;font-size:.8em; }
 
 h1 {padding-left:.2em;color:#f1f1f1;}
 
 #where h1 {float:left}
-#where span {font-size:.8em;color:#777;}
+#where span {font-size:.8em;color:#aaaaaa;}
 #where span a {color:#999;text-decoration:none;}
 
 body {
@@ -32,11 +33,11 @@ table {
 	margin-bottom: auto;
 	margin-left: auto;
 	margin-right: auto;
-	border-left: 1px solid #a09f9e;
-	border-right: 1px solid #a09f9e;
+	// border-left: 1px solid #a09f9e;
+	// border-right: 1px solid #a09f9e;
 	background: #e5e4e2;
 	border-collapse: collapse;
-	border-bottom: 1px solid #a09f9e;
+	// border-bottom: 1px solid #a09f9e;
 }
 table tr td.direction {
 	text-align: left;
@@ -78,7 +79,7 @@ table.search {
 	border: 0px;
 }
 table.search tr.header {
-	background: url(../gfx/bg.png) no-repeat;
+        background: #aaaaaa;
 }
 table.search tr.norwegian {
 	background: #ffffff;
@@ -86,7 +87,7 @@ table.search tr.norwegian {
 table.search th {
 	text-align: left;
 	border: 0px;
-	border-left: 1px solid #a09f9e;
+	// border-left: 1px solid #aaaaaa;
 	width: 66px;
 	padding: 0px;
 	padding-bottom: 15px;
@@ -103,12 +104,12 @@ table.search td {
 	padding: 0px;
 	padding-bottom: 15px;
 	padding-top: 0px;
-	border-right: 1px solid #a09f9e;
+	// border-right: 1px solid #aaaaaa;
 	padding-left: 5px;
 }
 table.search tr.header td {
 	text-align: left;
-	border-bottom: 1px solid #e5e4e2;
+	// border-bottom: 1px solid #e5e4e2;
 }
 table.search tr.header td.left {
 	width: 67px;
@@ -117,7 +118,7 @@ table.search tr.header td.left {
 	padding-left: 18px;
 	padding-top: 15px;
 	padding-bottom: 12px;
-	border-left: 1px solid #924e0b;
+	// border-left: 1px solid #aaaaaa;
 }
 table.search tr.header td.right {
 	width: 235px;
@@ -142,17 +143,17 @@ table.search td.div {
 	padding: 0px;
 	padding-bottom: 17px;
 	text-align: center;
-	border-right: 1px solid #a09f9e;
-	border-left: 1px solid #a09f9e;
+	// border-right: 1px solid #aaaaaa;
+	// border-left: 1px solid #aaaaaa;
 }
 select {
-	border: 1px solid #000;
+	// border: 1px solid #000;
 	background: #e5e4e2;
 	width: 215px;
 	font: normal 11px Helvetica, Arial, sans-serif;
 }
 input {
-	border: 1px solid #000;
+	// border: 1px solid #000;
 	background: #e5e4e2;
 	width: 145px;
 	font: normal 11px Helvetica, Arial, sans-serif;

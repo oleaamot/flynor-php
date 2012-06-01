@@ -25,10 +25,11 @@ if ($language=="nb")    { $language = "no"; }
 
 <table class="search" border="0">
 	<tr class="header">
-		<td class="left"><img src="../gfx/flynor.png" width="55" height="23" border="0"></td>
+		<td class="left"><h1>FlyNor</h1></td>
+		<td class="right"><div style='color: #ffffff'><a href='http://www.avinor.no/'>Airport data from Avinor</a></div></td>
 	</tr>
 	<tr>
-	<td class="top">
+	<td class="top" colspan="2">
 <? 
 if ($language == "en") {
 ?>

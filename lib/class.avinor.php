@@ -162,6 +162,13 @@ class avinor{
 			// Get xml from the server
 			$xml = new SimpleXMLElement($this->apiRequestUri, null, true);
 
+			/* if (!$xml) { */
+			/*   // echo "Error: " . $e->getMessage(); */
+			/*   // return false; */
+			/*   throw new Exception("Cannot connect to flydata.avinor.no.\n"); */
+			/*   return false; */
+			/* } */
+
 			// Parse the XML output
 			foreach($xml->flights->flight as $flight){
 				// Create an array with the name of the airports the plane has been through
