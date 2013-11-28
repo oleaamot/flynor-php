@@ -2,7 +2,6 @@
 session_start();
 include 'lib/class.flynor.php';
 include 'lib/class.avinor.php';
-include 'lib/class.strike.php';
 
 $langs = array (
         'en-US',
@@ -27,17 +26,14 @@ if ($language=="fr")    { $language = "en"; }
 if ($language=="nn")    { $language = "no"; }
 if ($language=="nb")    { $language = "no"; }
 
-$strike['en'] = get_strike("en");
-$strike['no'] = get_strike("no");
-
 $airportdata['en'] = "Airport data from Avinor";
 $airportdata['no'] = "Flydata fra Avinor";
 
 $htitle['en']   = $_SERVER['SERVER_NAME'];
 $htitle['no']   = $_SERVER['SERVER_NAME'];
 
-$credit_lbl['en']   = "<a href='about'>Information about FlyNor</a>";
-$credit_lbl['no']   = "<a href='about'>Informasjon om FlyNor</a>";
+$credit_lbl['en']   = "<a href='about'>Information about FlyNor.net</a>";
+$credit_lbl['no']   = "<a href='about'>Informasjon om FlyNor.net</a>";
 
 $flight_number_lbl['en']   = "Flight:";
 $flight_number_lbl['no']   = "Flight:";
@@ -99,12 +95,15 @@ $return_lbl['no']   = "<a href='#'>Tilbake til hovedsiden</a>";
 $select_airport['en'] = "SELECT AIRPORT";
 $select_airport['no'] = "VELG FLYPLASS";
 
-$credit['en']   = "<b><a href='http://www.flynor.net/privacy/'>Privacy Policy</a></b></p><p align='center'><b>Graphical design by<br /><a href='http://www.copyleft.no/'><img src='gfx/logo-hor-red-sml.png' alt='Graphical Design Logo' /></a></b>";
+$credit['en']   = "<b><a href='http://www.flynor.net/privacy/'>FlyNor.net Privacy Policy</a></b></p><p><b>Graphical design by <a href='http://www.copyleft.no/'><img src='gfx/logo-hor-red-sml.png' alt='Graphical Design Logo' /></a></b>";
 
-$credit['no']   = "<b><a href='http://www.flynor.net/privacy/'>Om personvern</a>.</b></p><p align='center'><b>Grafisk design av<br /><a href='http://www.copyleft.no/'><img src='gfx/logo-hor-red-sml.png' alt='Graphical Design Logo' /></a></b>";
+$credit['no']   = "<b><a href='http://www.flynor.net/privacy/'>Om personvern p&aring; FlyNor.net</a>.</b></p><p><b>Grafisk design av<br /><br /><a href='http://www.copyleft.no/'><img src='gfx/logo-hor-red-sml.png' alt='Graphical Design Logo' /></a></b>";
 
 $links['en']    = "<a href='http://www.flynor.net/links/'>Useful travel links</a>";
 $links['no']    = "<a href='http://www.flynor.net/links/'>Nyttige reiselenker</a>";
+
+$hosts['en']    = "<a href='http://www.domainnameshop.com/'>Hosting by Domainnameshop</a>";
+$hosts['no']    = "<a href='http://www.domeneshop.no/'>Webhotell fra Domeneshop</a>";
 
 $timeNow 	= time();
 		
@@ -152,21 +151,24 @@ $airlines = array(
 	'KLM'			=> 'http://www.klm.com/',
 	'Lufthansa'		=> 'http://www.lufthansa.com/',
 	'Norwegian'     	=> 'http://www.norwegian.no/',
-	'SAS'           	=> 'http://www.sas.no/'
+	'SAS'           	=> 'http://www.sas.no/',
+	'Danish Air Transport'  => 'http://www.dat.dk/',
+	'Ryanair'               => 'http://www.ryanair.com/'
 );
 
 $airlineicons = array(
 	'Air France'		=> 'gfx/AirFrance.png',
-//	'American Airlines'	=> 'gfx/AmericanAirlines.png',
-//	'Austrian Airlines'	=> 'gfx/AustrianAirlines.png',
-//	'British Airways'	=> 'gfx/BritishAirways.png',
+	/* 'American Airlines'	=> 'gfx/AmericanAirlines.png', */
+	/* 'Austrian Airlines'	=> 'gfx/AustrianAirlines.png', */
+	'British Airways'	=> 'gfx/BA.png',
 	'Croatia Airlines'	=> 'gfx/CroatiaAirlines.png',
-//	'Czech Airlines'	=> 'gfx/CzechAirlines.png',
-//	'Finnair Oy'		=> 'gfx/Finnair.png',
-//	'Icelandair'		=> 'gfx/Icelandair.png',
+	/* 'Czech Airlines'	=> 'gfx/CzechAirlines.png', */
+	/* 'Finnair Oy'		=> 'gfx/Finnair.png', */
+	/* 'Icelandair'		=> 'gfx/Icelandair.png', */
 	'KLM'			=> 'gfx/KLM.png',
 	'Lufthansa'		=> 'gfx/Lufthansa.png',
 	'Norwegian'             => 'gfx/Norwegian.png',
+	'Widerøe'            => 'gfx/Wideroe.png',
 	'SAS'                   => 'gfx/SAS.png'
 );
 
@@ -227,15 +229,6 @@ $airports = array(
 		<td class="left"><h1>FlyNor</h1></td>
   <td class="right"><div style='color: #ffffff'><a href='http://www.avinor.no/'><? echo $airportdata[$language]; ?></a></div></td>
 	</tr>
-	<?
-	if ($strike[$language] != "") {
-	?>
-	 	<tr>
-	 	<th colspan="3"><div style='font-size: 13px;'><? echo $strike[$language]; ?></div></th>
-	 	</tr>
-	<?
-	} 
-	?>
 	<tr>
 		<th><label for="airport"><? echo $airport_lbl[$language]; ?></label></th>
 		<td>
@@ -384,10 +377,10 @@ foreach($result as $flight):
 <?
 	if ($aircode == $_GET['airport_destination']) {
 
-	        $fp = fopen("/home/3/f/flynor/visitor", "a+");
-                $date = date("Y-m-d\TH:i:s\Z");
-                fwrite($fp, $_SERVER['REMOTE_ADDR'] . " " . $date . " " . $flight['flightId'] . " " . $direction . " " . $_GET['airport'] . " " . $_GET['airport_destination'] . " " . $_SERVER['HTTP_REFERER'] . "\n");
-                fclose($fp);
+	  //	        $fp = fopen("/home/3/f/flynor/visitor", "a+");
+	  //     $date = date("Y-m-d\TH:i:s\Z");
+	  //     fwrite($fp, $_SERVER['REMOTE_ADDR'] . " " . $date . " " . $flight['flightId'] . " " . $direction . " " . $_GET['airport'] . " " . $_GET['airport_destination'] . " " . $_SERVER['HTTP_REFERER'] . "\n");
+	  //     fclose($fp);
 
 ?>
 <table>
@@ -460,27 +453,33 @@ foreach($result as $flight):
 	<tr>
 	    <td><? echo $status_lbl[$language]; ?> <? echo "<b style='color: #aa0000'>" . $status . "</b>"; ?></td>
 	</tr>
+	<? if ($flight_number==strtoupper($flight['flightId'])) { echo "</div>"; } ?>
 	<tr>
 		<td>&nbsp;</td>
 		<td>&nbsp;</td>
 	</tr>
-	<? if ($flight_number==strtoupper($flight['flightId'])) { echo "</div>"; } ?>
-	</tbody>
-	</table>
 <?php 
 }
-
 }
 endforeach; 
 ?>
-<p align="center"><? echo $credit[$language]; ?></p>
+</table>
+<table>
+<tr style="background: #f9f9f9">
+<td>
+<p><? echo $credit[$language]; ?></p>
 <!-- AppStoreHQ:developer_claim_code:6b59d7df54d52432ad42df254a89efcdd61b132c -->
 <p><b><? echo $links[$language]; ?></b><br />
-<a href="https://www.flyklagenemnda.no/">Flyklagenemda</a><br />
+<a href="https://fly.transportklagenemnda.no/">Flyklagenemda</a><br />
 <a href="http://www.rgf.no" target="_blank">Reisegarantifondet</a><br /> 
 <a href="http://www.landsider.no" target="_blank">UDs landsider</a><br /> 
 <a href="http://www.forbrukerportalen.no" target="_blank">Forbrukerportalen</a><br /> 
 <a href="http://www.flypassasjer.no" target="_blank">Flypassasjer.no</a><br /> 
 <a href="http://www.lovdata.no/all/hl-19930611-101.html" target="_blank">Luftfartsloven (Lovdata)</a></p>
+<p><a href='http://ipv6-test.com/validate.php?url=referer'><img src='http://ipv6-test.com/button-ipv6-80x15.png' alt='ipv6 ready' title='ipv6 ready' border='0' /></a></p>
+</td>						   
+</tr>
+</tbody>
+</table>
 </body>
 </html>
